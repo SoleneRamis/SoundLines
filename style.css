@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "BluuNext";
+    src: url("../../assets/font/BluuNext-Bold.woff") format("woff");
+}
+
+body {
+    background-color: #0e0e0e;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.positionCanvas {
+    position: absolute;
+    margin-left: 10px;
+}
+
+canvas {
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.titleSound {
+    font-family: BluuNext;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    top: 29px;
+    left: 8.5vw;
+    letter-spacing: 14px;
+    font-size: 17px;
+}
+
+.initial {
+    font-family: BluuNext;
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 3vh;
+    right: 5.4vw;
+    letter-spacing: 10px;
+    font-size: 17px;
+}
+
+.date {
+    font-family: BluuNext;
+    color: white;
+    position: absolute;
+    top: 15.5vh;
+    right: 0vw;
+    transform: rotate(-90deg);
+    letter-spacing: 6px;
+    font-size: 13px;
+}
+
+.filter {
+    font-family: BluuNext;
+    color: white;
+    position: absolute;
+    letter-spacing: 6px;
+    font-size: 17px;
+    bottom: 21vh;
+    left: -2vw;
+    transform: rotate(-90deg);
+}
+
+.filter input {
+    margin-top: 8px;
+}

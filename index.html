@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Draw multiple shapes</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+
+    <body>
+        <p class='titleSound'>Daniel Avery ― Drone Logic</p>
+        <p class='initial'>S―R</p>
+        <p class='date'>26 Nov 2018</p>
+        <div class="positionCanvas">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="filter">
+            <label for="filter">Filter ― Frequency</label><br />
+            <input type="range" id="range" name="filter" min="1" max="500" value="120" />
+        </div>
+
+        <script src="js/gl-matrix-min.js"></script>
+        <script src="js/simplex-noise.js"></script>
+
+        <script src="js/draw.js"></script>
+        <script src="js//index.js"></script>
+    </body>
+</html>
