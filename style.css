@@ -70,7 +70,7 @@ canvas {
     margin-top: 8px;
 }
 
-@media (max-width: 2560px) and (max-height: 1258px) {
+@media (min-width: 2560px) and (min-height: 1258px) {
 
     .titleSound {
         top: 4vh;
