@@ -8,4 +8,4 @@ The Web Audio API involves handling audio operations inside an audio context, an
 
 -----
 
-![GIF view projetc Sound Exp](img/lines.gif)
+![GIF view projetc Sound Exp](assets/img/lines.gif)
