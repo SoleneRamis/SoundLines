@@ -20,7 +20,7 @@ var average = 0
 var lines = []
 
 var slider = document.getElementById("range")
-var freq = 120
+var freq = 30
 
 canvas.style.width = 85 + 'vw'
 canvas.style.height = 80  + 'vh'

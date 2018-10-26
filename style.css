@@ -61,34 +61,52 @@ canvas {
     position: absolute;
     letter-spacing: 6px;
     font-size: 17px;
-    bottom: 21vh;
-    left: -2vw;
+    bottom: 21.5vh;
+    left: -2.5vw;
     transform: rotate(-90deg);
 }
 
-.filter input {
+label {
     margin-top: 8px;
 }
 
-@media (min-width: 2560px) and (min-height: 1258px) {
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 240px;
+    height: 2px;
+    background: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    margin: auto;
+}
 
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background: #0e0e0e;
+    position: relative;
+    border: 2px solid white;
+    z-index: 3;
+    cursor: pointer;
+}
+
+@media (min-width: 2560px) and (min-height: 1258px) {
     .titleSound {
         top: 4vh;
         left: 8vw;
     }
-    
     .initial {
         right: 5.5vw;
     }
-    
     .date {
         top: 13.5vh;
         right: 2vw;
     }
-    
     .filter {
         bottom: 15.5vh;
         left: 1.5vw;
     }
-    
 }
