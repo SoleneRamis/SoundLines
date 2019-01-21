@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>🔊🎶 Sound Lines</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
-    <body>
+   dy>
+    <div id="home">
+        <h3 class="title">Canvas Audio Visualizer</h3>
+        <button id="start">Start</button>
+        <p id="description"></p>
+    </div>
+    <div id="app">
         <p class='titleSound'>Daniel Avery ― Drone Logic</p>
         <p class='initial'>S―R</p>
         <p class='date'>26 Nov 2018</p>
         <div class="positionCanvas">
             <canvas id="canvas"></canvas>
+            <audio id="audio" hidden crossOrigin="anonymous" src="https://res.cloudinary.com/dn32la6ny/video/upload/v1541584607/Daniel_Avery_-_Drone_Logic_PHLP02.mp3"></audio>
+
         </div>
         <div class="filter">
-            <input type="range" id="range" name="filter" min="1" max="500" value="30" /><br />
+            <input type="range" id="range" name="filter" min="1" max="500" value="30" />
+            <br />
             <label for="filter">Filter ― Frequency</label>
         </div>
+    </div>
 
-        <script src="js/gl-matrix-min.js"></script>
-        <script src="js/simplex-noise.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script>
+        var isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
 
-        <script src="js/draw.js"></script>
-        <script src="js//index.js"></script>
-    </body>
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone/i);
+            },
+            any: function () {
+                return (isMobile.Android() || isMobile.iOS());
+            }
+        };
+        if (isMobile.any()) {
+            document.getElementById("start").style.display = "none";
+            document.getElementById('description').innerHTML = "Touch the screen";
+        }
+    </script>
+</body>
 </html>

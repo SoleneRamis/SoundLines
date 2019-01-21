@@ -1,7 +1,10 @@
+
+document.getElementById('start').addEventListener("click", start)
+
 var canvas = document.getElementById("canvas")
 var ctx = canvas.getContext('2d')
 
-var audioCtx = new AudioContext()
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)()
 var audioBuffer
 var audioSource
 var analyser = audioCtx.createAnalyser()
@@ -13,17 +16,18 @@ var t = 0
 var DELTA_TIME = 0
 var LAST_TIME = Date.now()
 
-var moyenne = 0
+var average = 0
 var reducer = (acc, reducer) => acc + reducer
 var cumul = 0
-var average = 0
 var lines = []
 
 var slider = document.getElementById("range")
 var freq = 30
 
+var songUrl = 'https://res.cloudinary.com/dn32la6ny/video/upload/v1541584607/Daniel_Avery_-_Drone_Logic_PHLP02.mp3'
+
 canvas.style.width = 85 + 'vw'
-canvas.style.height = 80  + 'vh'
+canvas.style.height = 80 + 'vh'
 canvas.height = window.innerHeight
 canvas.width = window.innerWidth
 
@@ -33,7 +37,7 @@ slider.oninput = function () {
 
 function loadSound(url) {
     var request = new XMLHttpRequest();
-    request.open('GET', '../assets/sound/DanielAveryDroneLogic.mp3', true)
+    request.open('GET', url, true)
     request.responseType = 'arraybuffer'
 
     request.onload = function () {
@@ -53,7 +57,6 @@ function loadSound(url) {
             biquadFilter.connect(audioCtx.destination)
             // play sound
             audioSource.start()
-
             frame()
         }, function () {
             // error callback
@@ -80,10 +83,9 @@ function frame() {
     biquadFilter.frequency.setValueAtTime(freq, audioCtx.currentTime)
     biquadFilter.gain.value = 25
 
-    moyenne = frequencyData.reduce(reducer) / frequencyData.length
+    average = frequencyData.reduce(reducer) / frequencyData.length
 
     for (var i = 0; i < 6; i++) {
-        // get the frequency according to current i
         let percentIdx = i / 6;
         let frequencyIdx = Math.floor(1024 * percentIdx)
 
@@ -92,12 +94,28 @@ function frame() {
 
         cumul += frequencyData[frequencyIdx]
     }
-    average = cumul / 255;
 }
 
-function init() {
+if (audioCtx.state === 'suspended' && 'ontouchstart' in window) {
+    var unlock = function () {
+        audioCtx.resume().then(function () {
+            document.body.removeEventListener('touchstart', unlock);
+            document.body.removeEventListener('touchend', unlock);
+            setTimeout(function () {
+                document.getElementById("home").style.display = "none"
+                document.getElementById("app").style.display = "contents"
+                initLine()
+                loadSound(songUrl)
+            }, 3000);
+        });
+    };
+    document.body.addEventListener('touchstart', unlock, false);
+    document.body.addEventListener('touchend', unlock, false);
+}
+
+function start() {
+    document.getElementById("home").style.display = "none"
+    document.getElementById("app").style.display = "contents"
     initLine()
-    loadSound()
+    loadSound(songUrl)
 }
-
-init()
