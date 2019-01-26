@@ -1,5 +1,4 @@
-
-document.getElementById('start').addEventListener("click", start)
+document.getElementById('start').addEventListener('click', start)
 
 var canvas = document.getElementById("canvas")
 var ctx = canvas.getContext('2d')
@@ -60,7 +59,6 @@ function loadSound(url) {
             frame()
         }, function () {
             // error callback
-            //
         })
     }
     request.send()

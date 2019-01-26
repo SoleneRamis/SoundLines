@@ -15,10 +15,10 @@ class Draw {
         for (var i = 1; i < 6; i++) {
             ctx.beginPath()
             for (var x = 0; x < canvas.width; x++) {
-                if (moyenne < 10) {
-                    moyenne = 1
+                if (average < 10) {
+                    average = 1
                 }
-                var y = Math.sin(x * moyenne * (freq * 0.0000025) * (i / 3) + (cumul * 0.0005)) * (moyenne * 2.5)
+                var y = Math.sin(x * average * (freq * 0.0000025) * (i / 3) + (cumul * 0.0005)) * (average * 2.5)
                 ctx.lineTo(x, y + canvas.height / 2)
             }
             ctx.globalAlpha = i / 10
